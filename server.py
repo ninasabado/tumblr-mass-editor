@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 
 """
 Columbia's COMS W3101.003 Python Project
@@ -17,8 +17,6 @@ Read about it online.
 """
 
 import os
-from sqlalchemy import *
-from sqlalchemy.pool import NullPool
 from flask import Flask, request, render_template, g, redirect, Response
 
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
@@ -90,7 +88,7 @@ if __name__ == "__main__":
     """
 
     HOST, PORT = host, port
-    print "running on %s:%d" % (HOST, PORT)
+    print("running on {0}:{1}".format(HOST, PORT))
     app.run(host=HOST, port=PORT, debug=debug, threaded=threaded)
 
   run()
