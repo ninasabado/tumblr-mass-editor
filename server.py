@@ -17,10 +17,20 @@ Read about it online.
 """
 
 import os
+import pytumblr
+from pytumblr import interactive_console
 from flask import Flask, request, render_template, g, redirect, Response
 
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 app = Flask(__name__, template_folder=tmpl_dir)
+
+
+# private variables currently hardcoded for ease of use
+CONSUMER_KEY  = 'MN6llW04QBngyH2e31PCT3R0gMEaY656zQQFmwCyKdNKLr2dJ9'
+SECRET_KEY    = '82lF0LGIGsLvXfuHfQV1c7YkdjR6KL9wnSI1hXfpjpLu7Npgz8'
+TOKEN         = 'lvUpN9aukdFxa17CRhlfFEpfbIoEeefdVW0prDUu7kXOw4FI3i'
+SECRET        = 'K548qCNr7YrFBegFxRLmUmYJ2GIxwjjsDc39uq0UV2PxHiYKQs'
+
 
 @app.before_request
 def before_request():
@@ -56,6 +66,15 @@ def index():
 
   See its API: http://flask.pocoo.org/docs/0.10/api/#incoming-request-data
   """
+
+  client = pytumblr.TumblrRestClient(
+    CONSUMER_KEY,
+    CONSUMER_SECRET,
+    TOKEN,
+    SECRET,
+  )
+
+  print(client.info())
 
   # render_template looks in the templates/ folder for files.
   return render_template("index.html")
