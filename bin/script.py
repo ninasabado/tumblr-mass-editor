@@ -1,14 +1,22 @@
 import oauth2
+
+#https://github.com/michaelhelmick/python-tumblpy
 from tumblpy import Tumblpy
+import json
 
-CONSUMER_KEY = 'MN6llW04QBngyH2e31PCT3R0gMEaY656zQQFmwCyKdNKLr2dJ9'
-CONSUMER_SECRET = '82lF0LGIGsLvXfuHfQV1c7YkdjR6KL9wnSI1hXfpjpLu7Npgz8'
 
-t = Tumblpy(CONSUMER_KEY, CONSUMER_SECRET)
+with open('tokens.json') as json_data:
+    tokens = json.load(json_data)
 
-auth_props = t.get_authentication_tokens(callback_url='http://michaelhelmick.com')
-auth_url = auth_props['auth_url']
+CONSUMER_KEY = tokens['CONSUMER_KEY']
+CONSUMER_SECRET = tokens['CONSUMER_SECRET']
+OAUTH_TOKEN = tokens['OAUTH_TOKEN']
+OAUTH_TOKEN_SECRET = tokens['OAUTH_TOKEN_SECRET']
 
-OAUTH_TOKEN_SECRET = auth_props['oauth_token_secret']
 
-print('Connect with Tumblr via: {}'.format(auth_url))
+t = Tumblpy(CONSUMER_KEY, CONSUMER_SECRET,
+            OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+
+posts = t.get('posts', blog_url="www.cloktahwho.tumblr.com")
+
+print(posts)
