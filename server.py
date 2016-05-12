@@ -18,7 +18,7 @@ Read about it online.
 
 import os
 import pytumblr
-from pytumblr import interactive_console
+#from pytumblr import interactive_console
 from flask import Flask, request, render_template, g, redirect, Response
 
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')

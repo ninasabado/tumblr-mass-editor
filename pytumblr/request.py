@@ -39,7 +39,7 @@ class TumblrRequest(object):
         try:
             client.follow_redirects = False
             resp, content = client.request(url, method="GET", redirections=False, headers=self.headers)
-        except RedirectLimit, e:
+        except (RedirectLimit, e):
             resp, content = e.args
 
         return self.json_parse(content)
