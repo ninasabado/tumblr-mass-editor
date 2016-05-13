@@ -18,4 +18,12 @@ def get_posts(blog):
 	return t.get('posts', blog_url=blog)['posts']
 
 
+def get_info(blog):
+	'''
+	returns a dictionary of blog information
+	'''
+	return t.get('posts', blog_url=blog)['blog']
+
+
+
 
