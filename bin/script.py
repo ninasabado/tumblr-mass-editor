@@ -17,12 +17,24 @@ def get_posts(blog):
 	'''
 	return t.get('posts', blog_url=blog)['posts']
 
+def get_photos(blog):
+	'''
+	returns a list of photo posts
+	'''
+	return t.get('posts', blog_url=blog, extra_endpoints=["photo"])
 
 def get_info(blog):
 	'''
 	returns a dictionary of blog information
 	'''
 	return t.get('posts', blog_url=blog)['blog']
+
+def get_dash():
+	'''
+	returns dashboard of current user
+	'''
+	return t.dashboard()
+
 
 
 
