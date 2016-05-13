@@ -19,4 +19,4 @@ t = Tumblpy(CONSUMER_KEY, CONSUMER_SECRET,
 
 posts = t.get('posts', blog_url="www.cloktahwho.tumblr.com")
 
-print(posts)
+print(type(posts))
