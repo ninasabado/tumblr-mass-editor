@@ -35,7 +35,3 @@ def get_dash():
 	'''
 	return t.dashboard()
 
-
-
-
-
