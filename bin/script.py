@@ -1,4 +1,3 @@
-import oauth2
 
 #https://github.com/michaelhelmick/python-tumblpy
 from tumblpy import Tumblpy

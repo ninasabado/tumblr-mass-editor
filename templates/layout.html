@@ -12,8 +12,8 @@
   <link rel="icon" href="img/favicon.ico">
   <!-- TODO: use static files here for favicon -->
   
-  <!-- CSS
-    <link rel="stylesheet" type="text/css" href="css/styles.css"/> -->
+  <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"/>
 </head>
 <body>
   {% block body %}
@@ -21,5 +21,5 @@
   {% endblock %}
 </body>
 
-<!-- JS
-  <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script> -->
+<!-- JS -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
