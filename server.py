@@ -17,19 +17,27 @@ Read about it online.
 """
 
 import os
-import pytumblr
-#from pytumblr import interactive_console
+import json
+import oauth2
+#https://github.com/michaelhelmick/python-tumblpy
+from tumblpy import Tumblpy
 from flask import Flask, request, render_template, g, redirect, Response
 
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 app = Flask(__name__, template_folder=tmpl_dir)
 
-
 # private variables currently hardcoded for ease of use
-CONSUMER_KEY  = 'MN6llW04QBngyH2e31PCT3R0gMEaY656zQQFmwCyKdNKLr2dJ9'
-SECRET_KEY    = '82lF0LGIGsLvXfuHfQV1c7YkdjR6KL9wnSI1hXfpjpLu7Npgz8'
-TOKEN         = 'lvUpN9aukdFxa17CRhlfFEpfbIoEeefdVW0prDUu7kXOw4FI3i'
-SECRET        = 'K548qCNr7YrFBegFxRLmUmYJ2GIxwjjsDc39uq0UV2PxHiYKQs'
+CONSUMER_KEY        = 'MN6llW04QBngyH2e31PCT3R0gMEaY656zQQFmwCyKdNKLr2dJ9'
+CONSUMER_SECRET     = '82lF0LGIGsLvXfuHfQV1c7YkdjR6KL9wnSI1hXfpjpLu7Npgz8'
+OAUTH_TOKEN         = 'lvUpN9aukdFxa17CRhlfFEpfbIoEeefdVW0prDUu7kXOw4FI3i'
+OAUTH_TOKEN_SECRET  = 'K548qCNr7YrFBegFxRLmUmYJ2GIxwjjsDc39uq0UV2PxHiYKQs'
+
+t = Tumblpy(CONSUMER_KEY, CONSUMER_SECRET,
+            OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+
+posts = t.get('posts', blog_url="www.cloktahwho.tumblr.com")
+
+print(posts)
 
 
 @app.before_request
